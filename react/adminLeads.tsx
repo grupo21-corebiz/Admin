@@ -1,16 +1,39 @@
-import React, { FC } from 'react'
-import { Layout, PageBlock } from 'vtex.styleguide'
-import { useQuery } from 'react-apollo'
-import helloworld from './graphql/helloworld.gql'
+import React, { FC, useState, useEffect } from 'react'
+import { Layout, PageBlock, Divider } from 'vtex.styleguide'
+import api from './config/api'
+
+interface ILead {
+  id: number,
+  name: string,
+  email: string,
+  phone: string,
+  type: string
+}
 
 const AdminLeads: FC = () => {
-  const { data } = useQuery(helloworld)
+  const [leads, setLeads] = useState(Array<ILead>())
+
+  useEffect(() => {
+    api.get('https://7n2b3cjwuf.execute-api.us-east-1.amazonaws.com/prod/leads')
+    .then(res => {
+      const prospectLeads = res.data.data.filter((lead:ILead) => lead.type === 'prospect')
+      setLeads(prospectLeads)
+    })
+  }, [])
 
   return (
     <Layout>
-      <PageBlock title= "Título" subtitle="Alguma explicação" variation="full">
-        <h1>Cadastro de leads</h1>
-        <p>{data?.helloworld}</p>
+      <PageBlock title= "Leads prospectos" variation="full">
+        {leads.map((lead:ILead) => {
+          return (
+            <>
+              <p>Nome: {lead.name}</p>
+              <p>E-mail: {lead.email}</p>
+              <p>Telefone: {lead.phone}</p>
+              <Divider />
+            </>
+          )
+        })}
       </PageBlock>
     </Layout>
   )
