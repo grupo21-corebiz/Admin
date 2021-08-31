@@ -22,7 +22,7 @@ const AdminOtherLeads: FC = () => {
   }, [])
   return (
     <Layout>
-      <PageBlock title= "Leads prospectos" variation="full">
+      <PageBlock title= "Clientes" variation="full">
         {clients.map((client:IClient) => {
           return (
             <>
