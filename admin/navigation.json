@@ -5,12 +5,12 @@
     "subSectionItems": [
       {
       "labelId": "admin-leads.navigation.insight",
-      "path": "/admin/iotraining"
+      "path": "/admin/leads"
       },
 
       {
       "labelId": "admin-leads.navigation.management",
-      "path": "/admin/otheriotraining"
+      "path": "/admin/clients"
       }
     ]
 }

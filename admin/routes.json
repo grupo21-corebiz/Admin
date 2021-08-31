@@ -1,10 +1,10 @@
 {
   "admin.app.leads": {
     "component": "adminLeads",
-    "path": "/admin/app/iotraining"
+    "path": "/admin/app/leads"
   },
   "admin.app.otherleads": {
-    "component": "adminOtherLeads",
-    "path": "/admin/app/otheriotraining"
+    "component": "adminClients",
+    "path": "/admin/app/clients"
   }
 }
